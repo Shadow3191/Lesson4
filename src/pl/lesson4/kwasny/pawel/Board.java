@@ -39,9 +39,18 @@ public class Board {
         */
     }
 
-//    public int countMoves () {
-//        if (count == 9){
-//
-//        }
+    public void checkWinner() {
+        for (int row = 0; row < fields.length; row++){
+            boolean win = true;
+            for (int column = 0; column < fields.length; column++){
+                if (fields[column][row] == null){
+                    continue;
+                } else if ((fields[row][column].getSign().getMark() != Sign.CROSS.getMark())){
+                    win = false;
+                    break;
+                }
+            }
+        }
     }
+}
 //}

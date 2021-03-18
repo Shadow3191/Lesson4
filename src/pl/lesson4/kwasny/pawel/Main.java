@@ -51,8 +51,11 @@ public class Main {
 //            2.1 wstaw znak gracza na borda (add) - mam
             board.add(currentPlayer.getSign(), column,row);
 
+
+
 //            3. sprawdz kto wygrał lub zremisował   - do domu
-//            for (int chechWin = 0; chechWin < f)
+//            w Board to zrobić
+            board.checkWinner();
 
 //            4. wypisz kto wygrał lub że był remis jeśli tak było i zakończ gę     - do domu
 //            Przy 4 założeniu zmieniam shouldContunous na false
@@ -92,9 +95,5 @@ public class Main {
         } else {
             currentPlayer = firstPlayer;
         }
-    }
-
-    private static void checkWin(){
-//        for (int checkColumn = 0; checkColumn <  )
     }
 }
