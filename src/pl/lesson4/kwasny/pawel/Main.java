@@ -38,7 +38,7 @@ public class Main {
 //        board.show();
 
 
-        boolean shouldContinue = true;
+//        boolean shouldContinue = true;
 
         do {
 //            1. showBoard  - mam
@@ -49,13 +49,18 @@ public class Main {
             int row = getRow(); // ten proces to refactoring - wydzielanie fragmenty logiczne do mniejszych metod
 
 //            2.1 wstaw znak gracza na borda (add) - mam
-            board.add(currentPlayer.getSign(), column,row);
-
-
+//            zblokować pole
+            board.add(currentPlayer.getSign(), column, row);
 
 //            3. sprawdz kto wygrał lub zremisował   - do domu
 //            w Board to zrobić
-            board.checkWinner();
+            board.checkColumnWinner();
+            board.checkRowWinner();
+            board.checkLeftSlant();
+            board.checkRightSlant();
+
+
+//            board.gameContinuation();
 
 //            4. wypisz kto wygrał lub że był remis jeśli tak było i zakończ gę     - do domu
 //            Przy 4 założeniu zmieniam shouldContunous na false
@@ -76,24 +81,26 @@ public class Main {
 2. Zrobić sobie tablicę i wypisać które pola są dla białych i dać info czy może to wchodzić czy nie
 3.
 **/
-        } while (shouldContinue);
+        } while (board.checkColumnWinner() != true || board.checkRowWinner() != true || board.checkLeftSlant() != true || board.checkRightSlant());
 
     }
-    private static int getRow(){
+
+    private static int getRow() {
         System.out.println("Insert row : ");
         return scanner.nextInt();
     }
 
-    private static int getColumn(){
+    private static int getColumn() {
         System.out.println("Insert column : ");
         return scanner.nextInt();
     }
 
-    private static void changePlayer(){
-        if (currentPlayer == firstPlayer){  // 55 - 59 zrobić metodę chandePlayer
+    private static void changePlayer() {
+        if (currentPlayer == firstPlayer) {  // 55 - 59 zrobić metodę chandePlayer
             currentPlayer = secondPlayer;
         } else {
             currentPlayer = firstPlayer;
         }
     }
+
 }
