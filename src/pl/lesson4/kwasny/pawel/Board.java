@@ -11,6 +11,8 @@ public class Board {
             countMoves++;
         } else {
             System.out.println("This field is taken, chose another field");
+//            add(currentPlayer.getSign(), column, row);
+
         }
     }
 
@@ -32,9 +34,11 @@ public class Board {
         System.out.println("---------");
     }
 
+    static boolean continueGame = false;
+
     public boolean checkColumnWinner() {
         for (int column = 0; column < fields.length; column++) {
-            win = true;
+            win = false;
             int count = 0;
             for (int row = 0; row < fields.length; row++) {
                 if (fields[column][row] == null) {
@@ -42,7 +46,7 @@ public class Board {
                 } else if ((fields[column][row].getSign().getMark() == Sign.CROSS.getMark())) {
                     count++;
                 } else {
-                    win = false;
+//                    win = false;
                     count = 0;
                     break;
                 }
@@ -50,6 +54,7 @@ public class Board {
             if (win == true && count == 3) {
                 System.out.println("You Win! Congratulations.");
                 show();
+                continueGame = true;
                 return true;
             }
         }
@@ -73,6 +78,7 @@ public class Board {
             if (win == true && count == 3) {
                 System.out.println("You Win! Congratulations.");
                 show();
+                continueGame = true;
                 return true;
             }
         }
@@ -93,6 +99,7 @@ public class Board {
             if (win == true && count == 3) {
                 System.out.println("You Win! Congratulations.");
                 show();
+                continueGame = true;
                 return true;
             }
         }
@@ -116,6 +123,7 @@ public class Board {
             if (win == true && count == 3) {
                 System.out.println("You Win! Congratulations.");
                 show();
+                continueGame = true;
                 return true;
             }
             row++;

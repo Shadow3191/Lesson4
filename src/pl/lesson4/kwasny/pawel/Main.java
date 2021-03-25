@@ -8,6 +8,7 @@ public class Main {
     private static Player secondPlayer = new Player(Sign.CIRCLE);
     private static Player currentPlayer = firstPlayer;
 
+
     public static void main(String[] args) {
 	/*
 	Napisz grę w kółko i krzyżyk :
@@ -19,7 +20,6 @@ public class Main {
 	pozycje określam kolumnami ABC i wiersze 123 i pytam o kolumnę i wiersz gdzie wstawić, sprawdzenie czy jest wygrana i pytam kolejnego
 	gracza aż do remisu lub wygranej. Położyć nacisk na obiektowość czyli plansza, pole i gracz są obiektami.
 	*/
-
 //         Dopracować kreski między znakami
 
 //        Player firstPlayer = new Player(Sign.CROSS);
@@ -78,10 +78,12 @@ public class Main {
 
 /*
 1. Zrobić planszę do gry i przypisać że białe mogą tylko po białych a czarne po czarnych symulować znaczek na białe i czarne
-2. Zrobić sobie tablicę i wypisać które pola są dla białych i dać info czy może to wchodzić czy nie
+2. Zrobić sobie tablicę i wypisać które pola są dla białych i dać info czy może to pole wchodzić czy nie
 3.
 **/
-        } while (board.checkColumnWinner() != true || board.checkRowWinner() != true || board.checkLeftSlant() != true || board.checkRightSlant());
+        } while (board.continueGame != true);
+
+
 
     }
 
