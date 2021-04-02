@@ -2,15 +2,15 @@ package pl.lesson4.kwasny.pawel;
 
 import java.util.Scanner;
 
+import static pl.lesson4.kwasny.pawel.ChangePlayer.currentPlayer;
+
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
-    private static Player firstPlayer = new Player(Sign.CROSS);
-    private static Player secondPlayer = new Player(Sign.CIRCLE);
-    private static Player currentPlayer = firstPlayer;
-
 
     public static void main(String[] args) {
-	/*
+
+             
+        /*
 	Napisz grę w kółko i krzyżyk :
 	O - kółko
 	X - krzyżyk
@@ -22,24 +22,9 @@ public class Main {
 	*/
 //         Dopracować kreski między znakami
 
-//        Player firstPlayer = new Player(Sign.CROSS);
-//        Player secondPlayer = new Player(Sign.CIRCLE);
-//        Player currentPlayer = firstPlayer;
+
         Board board = new Board();
-//        board.add(Sign.CIRCLE,0, 0);
-//        board.add(Sign.CROSS,0, 1);
-//        board.add(Sign.CIRCLE,0, 2);
-//        board.add(Sign.CIRCLE,1, 0);
-//        board.add(Sign.CROSS,1, 1);
-//        board.add(Sign.CIRCLE,1, 2);
-//        board.add(Sign.CIRCLE,2, 0);
-//        board.add(Sign.CROSS,2, 1);
-//        board.add(Sign.CIRCLE,2, 2);
-//        board.show();
-
-
-//        boolean shouldContinue = true;
-
+        ChangePlayer changePlayer = new ChangePlayer();
         do {
 //            1. showBoard  - mam
             board.show();
@@ -54,13 +39,12 @@ public class Main {
 
 //            3. sprawdz kto wygrał lub zremisował   - do domu
 //            w Board to zrobić
-            board.checkColumnWinner();
-            board.checkRowWinner();
-            board.checkLeftSlant();
-            board.checkRightSlant();
-
-
-//            board.gameContinuation();
+//            board.checkColumnWinner(currentPlayer);
+//            board.checkRowWinner(currentPlayer);
+//            board.checkLeftSlant(currentPlayer);
+//            board.checkRightSlant(currentPlayer);
+//            board.checkDraw();
+            board.checkWinner(currentPlayer);
 
 //            4. wypisz kto wygrał lub że był remis jeśli tak było i zakończ gę     - do domu
 //            Przy 4 założeniu zmieniam shouldContunous na false
@@ -71,7 +55,7 @@ public class Main {
 //            } else {
 //                currentPlayer = firstPlayer;
 //            }
-            changePlayer();
+            ChangePlayer.changePlayer();
 
 // gra do dokończenia jeśli mało to napisać jeszcze warcaby
 //  ekstrachowanie - wydzielanie fragmentu kodu do osobnych metod na przykladzie pobierania kolumny :
@@ -82,7 +66,6 @@ public class Main {
 3.
 **/
         } while (board.continueGame != true);
-
 
 
     }
@@ -96,13 +79,4 @@ public class Main {
         System.out.println("Insert column : ");
         return scanner.nextInt();
     }
-
-    private static void changePlayer() {
-        if (currentPlayer == firstPlayer) {  // 55 - 59 zrobić metodę chandePlayer
-            currentPlayer = secondPlayer;
-        } else {
-            currentPlayer = firstPlayer;
-        }
-    }
-
 }
